@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 import TodoList from "../components/TodoList";
 import TodoForm from "../components/TodoForm";
 import { getTodos } from "../helpers/todoHelper";
+import ErrorMessage from "../components/ErrorMessage";
 
 export const TodoContext = createContext();
 
@@ -30,6 +31,7 @@ export default function Home({ todoList }) {
         <div className="mt-4">
           <TodoList list={todoList} />
         </div>
+        <ErrorMessage />
       </TodoContext.Provider>
     </div>
   );
