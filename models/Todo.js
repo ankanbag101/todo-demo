@@ -6,11 +6,16 @@ const todoSchema = new Schema(
       type: String,
       required: true,
       trim: true,
+      maxlength: 80,
     },
     details: {
       type: String,
       trim: true,
       maxlength: 200,
+    },
+    done: {
+      type: Boolean,
+      default: false,
     },
   },
   { timestamps: true }
