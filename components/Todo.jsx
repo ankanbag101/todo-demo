@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { ImBin, ImCheckmark, ImUndo2 } from "react-icons/im";
 import { removeTodo, updateTodo } from "../helpers/todoHelper";
 import { TodoContext } from "../pages";
+import TodoDetails from "./TodoDetails";
 
 const Todo = ({ todo }) => {
   const { state, updateState } = useContext(TodoContext);
+  const [open, setOpen] = useState(false);
 
   const markDone = (id, done) => async () => {
     const todo = await updateTodo(id, { done });
@@ -23,8 +25,9 @@ const Todo = ({ todo }) => {
       className="list-group-item d-flex justify-content-between align-items-center"
       key={todo._id}
     >
-      <div title={todo.details}>
+      <div style={{ cursor: "pointer" }} onClick={() => setOpen(true)}>
         {todo.done ? <strike>{todo.name}</strike> : todo.name}
+        <TodoDetails todo={todo} open={open} setOpen={setOpen} />
       </div>
       <div>
         {todo.done ? (
