@@ -1,15 +1,14 @@
 import { useState, useContext } from "react";
 import { ImPlus } from "react-icons/im";
+import { Spinner } from "reactstrap";
 import { uploadTodo } from "../helpers/todoHelper";
 import { TodoContext } from "../pages";
 
-// need setReload and setError
 const TodoForm = () => {
   const { state, updateState } = useContext(TodoContext);
   const [values, setValues] = useState({ name: "", details: "" });
   const [loading, setLoading] = useState(false);
   const { name, details } = values;
-  const { reload } = state;
 
   const handleChange = (name) => (e) =>
     setValues({ ...values, [name]: e.target.value });
@@ -54,11 +53,7 @@ const TodoForm = () => {
             title="Create"
             disabled={loading}
           >
-            {loading ? (
-              <div className="spinner-border spinner-border-sm" role="status" />
-            ) : (
-              <ImPlus />
-            )}
+            {loading ? <Spinner size="sm" /> : <ImPlus />}
           </button>
         </form>
       </div>
