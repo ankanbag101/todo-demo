@@ -19,7 +19,10 @@ export default async function handler(req, res) {
     } else
       res
         .status(400)
-        .json({ error: true, reason: "only GET request is allowed" });
+        .json({
+          error: true,
+          reason: { message: "only GET request is allowed" },
+        });
   } catch (err) {
     res.status(400).json({ error: true, reason: err });
   }

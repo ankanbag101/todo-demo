@@ -20,7 +20,10 @@ export default async function handler(req, res) {
     } else
       res
         .status(400)
-        .json({ error: true, reason: "Only POST request allowed" });
+        .json({
+          error: true,
+          reason: { message: "Only POST request allowed" },
+        });
   } catch (err) {
     res.status(400).json({ error: true, reason: err });
   }
