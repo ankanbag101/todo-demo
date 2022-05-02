@@ -28,7 +28,7 @@ const TodoList = ({ list }) => {
       <div className="col-lg-8 mx-auto">
         <ul className="list-group">
           {todos.length ? (
-            todos.map((todo) => <Todo todo={todo} />)
+            todos.map((todo) => <Todo key={todo._id} todo={todo} />)
           ) : (
             <EmptyWarning />
           )}

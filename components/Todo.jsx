@@ -21,10 +21,7 @@ const Todo = ({ todo }) => {
   };
 
   return (
-    <li
-      className="list-group-item d-flex justify-content-between align-items-center"
-      key={todo._id}
-    >
+    <li className="list-group-item d-flex justify-content-between align-items-center">
       <div style={{ cursor: "pointer" }} onClick={() => setOpen(true)}>
         {todo.done ? <strike>{todo.name}</strike> : todo.name}
         <TodoDetails todo={todo} open={open} setOpen={setOpen} />
